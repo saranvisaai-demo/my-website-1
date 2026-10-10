@@ -1,0 +1,39 @@
+# Redirect HTTP and the www host to the canonical HTTPS domain.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=on [OR]
+  RewriteCond %{HTTP_HOST} ^www\.saranvisa\.cloud$ [NC]
+  RewriteRule ^ https://saranvisa.cloud%{REQUEST_URI} [R=301,L,NE]
+
+  # Block dotfiles and hidden directories, while allowing ACME validation paths.
+  RewriteRule (^|/)\.(?!well-known(?:/|$)) - [F,L]
+</IfModule>
+
+# Do not expose folder contents or private dotfiles.
+Options -Indexes
+<FilesMatch "^(\.htaccess|\.htpasswd|\.git.*)$">
+  Require all denied
+</FilesMatch>
+
+ErrorDocument 404 /404.html
+
+# Apply the requested browser security policy and related protections.
+<IfModule mod_headers.c>
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+</IfModule>
+
+# Set a 30-day expiry for stylesheets and scripts when mod_expires is enabled.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 30 days"
+  ExpiresByType application/javascript "access plus 30 days"
+  ExpiresByType text/javascript "access plus 30 days"
+</IfModule>

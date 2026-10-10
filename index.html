@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Current local times in New York, India, Germany, and Australia.">
+  <meta name="theme-color" content="#f4f7fb">
+  <title>Saranvisa</title>
+  <link rel="stylesheet" href="style.css?v=1">
+  <script src="script.js?v=1" defer></script>
+</head>
+<body>
+  <main class="page-shell">
+    <header class="page-header">
+      <p class="eyebrow">Time, wherever you are</p>
+      <h1>Saranvisa-1.1</h1>
+      <p class="intro">A little snapshot of the time around the world.</p>
+    </header>
+
+    <section class="clock-grid" aria-label="Current local times">
+      <article class="clock-card">
+        <div class="card-heading">
+          <h2>New York (ET)</h2>
+          <span class="zone-abbreviation" data-zone-abbreviation="new-york">—</span>
+        </div>
+        <p class="clock-time" data-clock="new-york">--:--:-- --</p>
+        <p class="clock-date" data-date="new-york">Loading date…</p>
+      </article>
+
+      <article class="clock-card">
+        <div class="card-heading">
+          <h2>India (IST)</h2>
+          <span class="zone-abbreviation" data-zone-abbreviation="india">IST</span>
+        </div>
+        <p class="clock-time" data-clock="india">--:--:-- --</p>
+        <p class="clock-date" data-date="india">Loading date…</p>
+      </article>
+
+      <article class="clock-card">
+        <div class="card-heading">
+          <h2>Germany (CET/CEST)</h2>
+          <span class="zone-abbreviation" data-zone-abbreviation="germany">—</span>
+        </div>
+        <p class="clock-time" data-clock="germany">--:--:-- --</p>
+        <p class="clock-date" data-date="germany">Loading date…</p>
+      </article>
+
+      <article class="clock-card">
+        <div class="card-heading">
+          <h2>Australia (Sydney)</h2>
+          <span class="zone-abbreviation" data-zone-abbreviation="australia">—</span>
+        </div>
+        <p class="clock-time" data-clock="australia">--:--:-- --</p>
+        <p class="clock-date" data-date="australia">Loading date…</p>
+      </article>
+    </section>
+
+    <footer class="page-footer">
+      <p>© <span id="current-year"></span> Saranvisa</p>
+    </footer>
+  </main>
+</body>
+</html>

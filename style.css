@@ -1,0 +1,171 @@
+/* A small, responsive layout with colors that follow the visitor's theme. */
+:root {
+  color-scheme: light dark;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --page-background: #f4f7fb;
+  --card-background: #ffffff;
+  --text-primary: #172033;
+  --text-secondary: #68738a;
+  --accent: #4263eb;
+  --card-border: #e2e8f2;
+  --card-shadow: 0 18px 50px rgb(30 48 90 / 8%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background: var(--page-background);
+  color: var(--text-primary);
+}
+
+.page-shell {
+  display: flex;
+  width: min(100% - 40px, 1080px);
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  margin-inline: auto;
+  padding-block: 64px 28px;
+}
+
+.page-header {
+  margin-bottom: 38px;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  letter-spacing: -0.06em;
+  line-height: 1.05;
+}
+
+.intro {
+  margin: 16px 0 0;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+}
+
+.clock-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.clock-card {
+  min-width: 0;
+  padding: 28px 24px;
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  background: var(--card-background);
+  box-shadow: var(--card-shadow);
+}
+
+.card-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card-heading h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 650;
+}
+
+.zone-abbreviation {
+  flex: 0 0 auto;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+}
+
+.clock-time {
+  margin: 30px 0 8px;
+  font-size: clamp(1.8rem, 3vw, 2.35rem);
+  font-variant-numeric: tabular-nums;
+  font-weight: 650;
+  letter-spacing: -0.055em;
+  white-space: nowrap;
+}
+
+.clock-date {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+}
+
+.page-footer {
+  margin-top: 52px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.page-footer p {
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .page-shell {
+    width: min(100% - 32px, 520px);
+    padding-block: 48px 24px;
+  }
+
+  .page-header {
+    margin-bottom: 28px;
+  }
+
+  .clock-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .clock-card {
+    padding: 23px 22px;
+  }
+
+  .clock-time {
+    margin-top: 22px;
+    font-size: 2.1rem;
+  }
+
+  .page-footer {
+    margin-top: 34px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page-background: #101522;
+    --card-background: #191f2e;
+    --text-primary: #f0f3fa;
+    --text-secondary: #a6afc2;
+    --accent: #91a7ff;
+    --card-border: #2b3448;
+    --card-shadow: 0 18px 50px rgb(0 0 0 / 20%);
+  }
+}
